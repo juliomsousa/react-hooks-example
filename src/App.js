@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 function App() {
 	const [techs, setTech] = useState([]);
@@ -36,9 +36,12 @@ function App() {
 		};
 	}, []);
 
+	const techSize = useMemo(() => techs.length, [techs]);
+
 	return (
 		<>
-			<p>Hooks - useState</p>
+			<p>Hooks</p>
+			<p>Você sabe {techSize} tecnologias</p>
 			<ul>
 				{techs.map(tech => (
 					<li key={tech}>{tech}</li>

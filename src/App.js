@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 
 function App() {
 	const [techs, setTech] = useState([]);
 	const [newTech, setNewTech] = useState('');
 
-	function handleAdd() {
+	const handleAdd = useCallback(() => {
 		if (newTech.length > 0) {
 			setTech([...techs, newTech]);
 			setNewTech('');
 		}
-	}
+	}, [newTech, techs]);
 
 	function handleNewTech(e) {
 		setNewTech(e.target.value);
